@@ -16,12 +16,12 @@ restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
   const data = req.body;
 
-  const messages = data.fulfillmentMessages;
-  const action = data.action;
-  const contexts = data.outputContexts;
-  const parameters = data.parameters;
+  const OrigMessage = data.queryResult.queryText;
+  const action = data.queryResult.action;
+  const contexts = data.queryResult.contexts;
+  const parameters = data.queryResult.parameters;
 
-  const response = { fulfillmentText: "Messages: " + messages + " | Action: " + action + " | Contexts: " + contexts + " | Parameters: " + parameters,}
+  const response = { fulfillmentText: "Original Message: " + OrigMessage + " | Action: " + action + " | Contexts: " + contexts + " | Parameters: " + parameters,}
 
   res.json(response);
   
