@@ -16,7 +16,12 @@ restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
   const data = req.body;
 
-  const response = { fulfillmentText: "Your webhook works fine !",}
+  const messages = data.fulfillmentMessages;
+  const action = data.action;
+  const contexts = data.outputContexts;
+  const parameters = data.parameters;
+
+  const response = { fulfillmentText: "Messages: " + messages + " | Action: " + action + " | Contexts: " + contexts + " | Parameters: " + parameters,}
 
   res.json(response);
   
