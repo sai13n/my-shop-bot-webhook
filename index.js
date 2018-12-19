@@ -19,9 +19,10 @@ restService.post("/echo", function(req, res) {
   const OrigMessage = data.queryResult.queryText;
   const action = data.queryResult.action;
   const contexts = data.queryResult.contexts;
-  const parameters = data.queryResult.parameters;
+  const parameters = data.queryResult.parameters.echoText;
+  const intent = data.queryResult.intent.displayName;
 
-  const response = { fulfillmentText: "Original Message: " + OrigMessage + " | Action: " + action + " | Contexts: " + contexts + " | Parameters: " + parameters,}
+  const response = { fulfillmentText: "Original Message: " + OrigMessage + " | Action: " + action + " | Contexts: " + contexts + " | Parameters EchoText: " + parameters + " | Intent: " + intent,}
 
   res.json(response);
   
