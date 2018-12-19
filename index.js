@@ -13,18 +13,33 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.post("/echo", function(req, res) {
+restService.post("/webhook", function(req, res) {
   const data = req.body;
+  switch(data.queryResult.action) {
+  case "detailed_order":
 
-  const OrigMessage = data.queryResult.queryText;
-  const action = data.queryResult.action;
-  const contexts = data.queryResult.contexts;
-  const parameters = data.queryResult.parameters.echoText;
-  const intent = data.queryResult.intent.displayName;
+    let client_name = data.queryResult.parameters.client_name;
+    let client_contact_number = data.queryResult.parameters.client_contact_number;
+    let client_address = data.queryResult.parameters.client_address;
+    let platter_details = data.queryResult.outputContexts.Platters;
 
-  const response = { fulfillmentText: "Original Message: " + OrigMessage + " | Action: " + action + " | Contexts: " + contexts + " | Parameters EchoText: " + parameters + " | Intent: " + intent,}
+    //let OrigMessage = data.queryResult.queryText;
+    //let action = data.queryResult.action;
+    //let contexts = data.queryResult.contexts;
+    //let intent = data.queryResult.intent.displayName;
 
-  res.json(response);
+    let response = { fulfillmentText: "Your order is as follows: \n Platter - " + platter_details + "\n Name - " + client_name + "\n Contact Number - " + client_contact_number + "\n Address - " + client_address,}
+
+ 
+    break;
+  //case y:
+    //code block
+    //break;
+  default:
+    let response = { fulfillmentText: "Error: Unable to match action",}
+}
+
+    res.json(response); 
   
 });
 
