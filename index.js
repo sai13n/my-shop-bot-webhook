@@ -16,7 +16,7 @@ restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
   const data = req.body;
 
-  const response = { fulfillmentText: data,}
+  const response = { fulfillmentText: "Your webhook works fine !",}
 
   res.json(response);
   
