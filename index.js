@@ -14,18 +14,12 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-  var action = req.body.result.action;
-  var speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.echoText
-      ? req.body.result.parameters.echoText
-      : "Seems like some problem. Speak again.";
-  return res.json({
-    speech: speech,
-    displayText: speech,
-    source: action
-  });
+  const data = req.body;
+
+  const response = { fulfillmentText: "Your webhook works fine !",}
+  
+  res.json(response);
+  
 });
 
 restService.listen(process.env.PORT || 8000, function() {
