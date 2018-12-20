@@ -38,6 +38,7 @@ restService.post("/webhook", function(req, res) {
   case "test_webhook":
     let response = { fulfillmentText: "Webhook works",}
     res.json(response); 
+    break;
   default:
     let response = { fulfillmentText: "Error: Unable to match action",}
     res.json(response); 
