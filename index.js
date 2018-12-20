@@ -18,7 +18,12 @@ restService.post("/webhook", function(req, res) {
 
   const action = data.queryResult.action;
 
-  switch(action) {
+  if (action == "test_webhook"){
+    let response = { fulfillmentText: "Webhook works";}
+    res.json(response); 
+  }
+
+  /*switch(action) {
   case "detailed_order":
 
     let client_name = data.queryResult.parameters.client_name;
@@ -42,7 +47,7 @@ restService.post("/webhook", function(req, res) {
   default:
     let response = { fulfillmentText: "Error: Unable to match action",}
     res.json(response); 
-}
+}*/
 
     
   
