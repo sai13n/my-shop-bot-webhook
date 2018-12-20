@@ -16,7 +16,7 @@ restService.use(bodyParser.json());
 restService.post("/webhook", function(req, res) {
   const data = req.body;
 
-  let action = data.queryResult.action;
+  const action = data.queryResult.action;
 
   switch(action) {
   case "detailed_order":
