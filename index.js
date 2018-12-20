@@ -24,7 +24,7 @@ restService.post("/webhook", function(req, res) {
     res.json(response); 
     break;
 
-    case test_hijk:
+    case "test_hijk":
     let response = { fulfillmentText: "HIJK Webhook works!",}
     res.json(response); 
     break;    
