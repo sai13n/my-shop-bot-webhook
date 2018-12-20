@@ -22,7 +22,7 @@ restService.post("/webhook", function(req, res) {
     let client_name = data.queryResult.parameters.client_name;
     let client_contact_number = data.queryResult.parameters.client_contact_number;
     let client_address = data.queryResult.parameters.client_address;
-    let outputContextsString = JSON.parse(data.queryResult.outputContexts);
+    let outputContextsString = data.queryResult.outputContexts[0];
     let platter_details = outputContextsString.parameters.Platters;
 
     //let OrigMessage = data.queryResult.queryText;
