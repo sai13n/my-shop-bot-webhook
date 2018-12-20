@@ -18,10 +18,10 @@ restService.post("/webhook", function(req, res) {
 
   const action = data.queryResult.action;
 
-  if (action == "test_webhook"){
-    let response = { fulfillmentText: "Webhook works";}
+  
+    let response = { fulfillmentText: "Webhook works. Action - " + action;}
     res.json(response); 
-  }
+  
 
   /*switch(action) {
   case "detailed_order":
